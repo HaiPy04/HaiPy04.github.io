@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerial Robotics & CV Portfolio</title>
+    <meta name="description" content="Portfolio of an Aerial Robotics and Computer Vision Engineer">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">CYBERFOLIO</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-content">
+                <h1>Robotics Simulation & <span class="highlight">Computer Vision</span> </h1>
+                <h1><span> Engineer</span></h1>
+                <p>Building the future of autonomous systems.</p>
+                <a href="#projects" class="btn">View Projects</a>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="equation-header">Development(t) = Education_h(t) + Experience_p(t)</h2>
+                <div class="experience-split">
+                    <div class="col-homogeneous">
+                        <h3 class="col-title">Homogeneous Solution <span class="sub-text">(Education)</span></h3>
+                        <div id="homogeneous-content" class="timeline-group">
+                            <!-- Education Cards -->
+                        </div>
+                    </div>
+
+                    <div class="visual-separator">+</div>
+
+                    <div class="col-particular">
+                        <h3 class="col-title">Particular Solution <span class="sub-text">(Experience)</span></h3>
+                        <div id="particular-content" class="timeline-group">
+                            <!-- Experience Cards -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Deployed Systems</h2>
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project Cards will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I am an engineer passionate about autonomous systems. My work focuses on the intersection of aerial
+                    robotics and computer vision, striving to create intelligent machines that can perceive and navigate
+                    the world independently.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Interested in collaborating? Send me a message.</p>
+                <a href="mailto:email@example.com" class="btn">Contact Me</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Structure -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <div class="video-placeholder modal-image"></div> <!-- Placeholder for image -->
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title">Project Title</h2>
+                    <p id="modal-category" class="subtitle">Category</p>
+                    <div id="modal-stack" class="tech-stack"></div>
+                    <p id="modal-description">Full description goes here.</p>
+                    <a href="#" id="modal-github" class="btn" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Modal Structure -->
+    <div id="experience-modal" class="modal">
+        <div class="modal-content experience-modal-content">
+            <span class="close-modal close-experience">&times;</span>
+            <div class="experience-modal-body">
+                <!-- Slideshow -->
+                <div class="slideshow-container">
+                    <img id="slideshow-image" src="" alt="Experience Image" class="slideshow-img">
+                    <button class="slide-nav prev-slide" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slide-nav next-slide" onclick="changeSlide(1)">&#10095;</button>
+                    <div class="slide-dots" id="slide-dots">
+                        <!-- Dynamic Dots -->
+                    </div>
+                </div>
+
+                <!-- Full Description -->
+                <div class="experience-details">
+                    <h2 id="exp-modal-title">Role Title</h2>
+                    <div class="subtitle" id="exp-modal-company">Company Name</div>
+                    <div id="experience-full-description" class="rich-text">
+                        <!-- Injected HTML -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Aerial Robotics Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
