@@ -200,7 +200,7 @@ function openModal(project) {
 
     if (project.github && project.github !== '#') {
         modalGithub.href = project.github;
-        modalGithub.style.display = 'inline-block'; ff
+        modalGithub.style.display = 'inline-block';
         modalGithub.textContent = 'View on GitHub';
     } else {
         modalGithub.style.display = 'none';
