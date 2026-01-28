@@ -31,7 +31,7 @@ const projects = [
         stack: ["Gazebo", "URDF", "ROS2 Control", "MoveIt"],
         github: "https://github.com/yourusername/manipulator",
         image: "./images/manipulator.png",
-        videoPreview: "videos/manip.mkv"
+        videoPreview: "videos/DOF_3_manip.webm"
     },
     {
         id: 4,
@@ -53,7 +53,7 @@ const projects = [
         stack: ["C++", "Arduino", "PCB Design", "PID Control"],
         github: "https://github.com/yourusername/polymaze",
         image: "images/polymaze.png",
-        videoPreview: "videos/manip.mkv"
+        videoPreview: "videos/amazeo.mkv"
     },
     {
         id: 6,
