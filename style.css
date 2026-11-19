@@ -740,39 +740,39 @@ h2::after {
     flex-grow: 1; /* Pushes bottom action links to same vertical baseline */
 }
 
-/* Video / GitHub Action Links */
+/* Project Card Action Button */
 .card-actions {
     margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid rgba(102, 252, 241, 0.12);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
 }
 
 .btn-card-action {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    justify-content: center;
+    gap: 0.5rem;
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    padding: 0.45rem 0.85rem;
+    padding: 0.55rem 1.1rem;
     border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
+    width: 100%;
 }
 
 .btn-view-demo {
     color: var(--accent-cyan);
-    background: rgba(102, 252, 241, 0.06);
-    border: 1px solid rgba(102, 252, 241, 0.25);
+    background: rgba(102, 252, 241, 0.08);
+    border: 1px solid rgba(102, 252, 241, 0.3);
 }
 
 .btn-view-demo:hover {
     background: var(--accent-cyan);
     color: var(--bg-color);
-    box-shadow: 0 0 12px rgba(102, 252, 241, 0.3);
+    box-shadow: 0 0 14px rgba(102, 252, 241, 0.35);
 }
 
 .btn-view-demo .action-arrow {
@@ -780,30 +780,12 @@ h2::after {
 }
 
 .project-card:hover .btn-view-demo .action-arrow {
-    transform: translateX(3px);
-}
-
-.btn-card-github {
-    color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.btn-card-github:hover {
-    color: #fff;
-    border-color: var(--accent-cyan);
-    background: rgba(31, 40, 51, 0.9);
-}
-
-.btn-card-restricted {
-    font-size: 0.8rem;
-    color: rgba(197, 198, 199, 0.5);
-    font-style: italic;
-    padding: 0.45rem 0.5rem;
+    transform: translateX(4px);
 }
 
 /* ==========================================================================
    Modals (Project Modal & Experience Modal)
+   Side-by-Side Two-Column Layout on Desktop
    ========================================================================== */
 .modal {
     display: none;
@@ -834,10 +816,10 @@ h2::after {
     margin: auto;
     padding: 0;
     border: 1px solid var(--accent-cyan);
-    width: 100%;
-    max-width: 960px;
+    width: 95%;
+    max-width: 1050px;
     position: relative;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(102, 252, 241, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(102, 252, 241, 0.25);
     border-radius: var(--radius-md);
     overflow: hidden;
     transform: translateY(20px);
@@ -864,42 +846,81 @@ h2::after {
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-sm);
-    background: rgba(11, 12, 16, 0.6);
+    background: rgba(11, 12, 16, 0.7);
+    border: 1px solid rgba(102, 252, 241, 0.2);
 }
 
 .close-modal:hover {
     color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
     transform: scale(1.1);
 }
 
+/* Two-Column Side-by-Side Modal Layout */
 .modal-body {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    min-height: 480px;
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+    min-height: 440px;
+    background: var(--card-bg);
 }
 
 .modal-image-container {
     background: #000;
-    min-height: 400px;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid rgba(102, 252, 241, 0.12);
-    overflow: hidden;
+    padding: 1.5rem;
+    border-right: 1px solid rgba(102, 252, 241, 0.15);
+}
+
+.modal-media-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #000;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(102, 252, 241, 0.18);
+    display: block;
+}
+
+.modal-image-display {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #000;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(102, 252, 241, 0.18);
+    display: block;
 }
 
 .modal-details {
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
 .modal-details h2 {
     text-align: left;
     margin-bottom: 0.35rem;
-    font-size: 1.85rem;
+    font-size: 1.7rem;
     color: #fff;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
 }
 
 .modal-details h2::after {
@@ -912,19 +933,18 @@ h2::after {
     letter-spacing: 1.5px;
     font-size: 0.85rem;
     font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.modal-details .tech-stack {
     margin-bottom: 1.25rem;
 }
 
 .modal-details p {
-    margin-bottom: 1.5rem;
-    color: rgba(197, 198, 199, 0.92);
+    margin-bottom: 0;
+    color: rgba(197, 198, 199, 0.95);
     line-height: 1.7;
     font-size: 1rem;
-}
-
-.modal-details .btn {
-    align-self: flex-start;
-    margin-top: auto;
 }
 
 /* Experience Modal & Slideshow */
@@ -1140,14 +1160,22 @@ footer {
     }
 
     .modal-image-container {
-        height: 280px;
+        height: auto;
         min-height: auto;
         border-right: none;
         border-bottom: 1px solid rgba(102, 252, 241, 0.12);
+        padding: 1.25rem 1rem;
+    }
+
+    .modal-video-player,
+    .modal-image-display {
+        width: 100%;
+        aspect-ratio: 16 / 9;
     }
 
     .modal-details {
-        padding: 2rem 1.5rem;
+        padding: 1.75rem 1.25rem;
+        max-height: none;
     }
 }
 

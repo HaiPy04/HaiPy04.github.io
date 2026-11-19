@@ -101,8 +101,7 @@ const modalTitle = document.getElementById('modal-title');
 const modalCategory = document.getElementById('modal-category');
 const modalDescription = document.getElementById('modal-description');
 const modalStack = document.getElementById('modal-stack');
-const modalGithub = document.getElementById('modal-github');
-const modalImagePlaceholder = document.querySelector('.modal-image');
+const modalMediaWrapper = document.getElementById('modal-media-wrapper');
 
 // --- Mobile Navigation Toggle ---
 function initMobileNavigation() {
@@ -127,7 +126,7 @@ function initMobileNavigation() {
     });
 }
 
-// --- Render Projects (Visual Hierarchy: Title -> Tech Stack -> Summary -> Links) ---
+// --- Render Projects (Visual Hierarchy: Title -> Tech Stack -> Summary -> Action) ---
 function renderProjects() {
     if (!projectsGrid) return;
 
@@ -137,8 +136,8 @@ function renderProjects() {
                 <img src="${project.image}" alt="${project.title}" loading="lazy">
                 ${project.videoPreview ? `
                     <video loop muted playsinline preload="metadata">
-                        <source src="${project.videoPreview}" type="video/webm">
                         <source src="${project.videoPreview}" type="video/mp4">
+                        ${project.videoPreview.endsWith('.mp4') ? `<source src="${project.videoPreview.replace('.mp4', '.webm')}" type="video/webm">` : ''}
                     </video>
                     <span class="video-preview-badge">
                         <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
@@ -158,22 +157,10 @@ function renderProjects() {
                 </div>
                 <p class="card-summary">${project.summary}</p>
                 <div class="card-actions">
-                    <button type="button" class="btn-card-action btn-view-demo" aria-label="View details and demo for ${project.title}">
-                        <span>Details & Demo</span>
+                    <button type="button" class="btn-card-action btn-view-demo" aria-label="View demo and details for ${project.title}">
+                        <span>Watch Demo & Details</span>
                         <span class="action-arrow" aria-hidden="true">&rarr;</span>
                     </button>
-                    ${project.github && project.github !== '#' ? `
-                        <a href="${project.github}" class="btn-card-action btn-card-github" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" aria-label="GitHub repository for ${project.title}">
-                            <svg class="github-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                            </svg>
-                            <span>Code</span>
-                        </a>
-                    ` : `
-                        <span class="btn-card-action btn-card-restricted" title="Internal / Restricted Repository">
-                            Private
-                        </span>
-                    `}
                 </div>
             </div>
         </article>
@@ -194,7 +181,7 @@ function renderProjects() {
             }
         });
 
-        // Hover Video Preview
+        // Hover Video Preview on Cards
         const video = card.querySelector('video');
         if (video) {
             card.addEventListener('mouseenter', () => {
@@ -253,8 +240,10 @@ function renderExperience() {
     });
 }
 
-// --- Project Modal Functions ---
+// --- Project Modal Functions (Two-Column Side-by-Side View) ---
 function openModal(project) {
+    if (!project) return;
+
     modalTitle.textContent = project.title;
     modalCategory.textContent = project.category;
     modalDescription.textContent = project.description;
@@ -263,31 +252,28 @@ function openModal(project) {
         `<span class="badge">${tech}</span>`
     ).join('');
 
-    if (project.github && project.github !== '#') {
-        modalGithub.href = project.github;
-        modalGithub.style.display = 'inline-flex';
-        modalGithub.innerHTML = `
-            <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            <span>View on GitHub</span>
-        `;
-    } else {
-        modalGithub.style.display = 'none';
-    }
-
-    // Video vs Image Modal Media
+    // Playable Demo Video in Left Column (16:9 aspect ratio, controls enabled)
     if (project.videoPreview) {
-        modalImagePlaceholder.innerHTML = `
-            <video controls autoplay loop playsinline style="width:100%; height:100%; object-fit:contain; background:#000;">
-                <source src="${project.videoPreview}" type="video/webm">
+        modalMediaWrapper.innerHTML = `
+            <video controls playsinline preload="metadata" poster="${project.image}" class="modal-video-player">
                 <source src="${project.videoPreview}" type="video/mp4">
+                ${project.videoPreview.endsWith('.mp4') ? `<source src="${project.videoPreview.replace('.mp4', '.webm')}" type="video/webm">` : ''}
                 Your browser does not support the video tag.
             </video>
         `;
+        const video = modalMediaWrapper.querySelector('video');
+        if (video) {
+            video.load();
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Browser autoplay policy might require manual interaction; poster image remains cleanly visible
+                });
+            }
+        }
     } else {
-        modalImagePlaceholder.innerHTML = `
-            <img src="${project.image}" alt="${project.title}" style="width:100%; height:100%; object-fit:contain; background:#000;">
+        modalMediaWrapper.innerHTML = `
+            <img src="${project.image}" alt="${project.title}" class="modal-image-display">
         `;
     }
 
@@ -298,9 +284,16 @@ function openModal(project) {
 function closeModal() {
     modal.classList.remove('show');
     document.body.style.overflow = '';
-    // Pause any active video
-    const video = modalImagePlaceholder.querySelector('video');
-    if (video) video.pause();
+    // Cleanly pause and reset any active video
+    if (modalMediaWrapper) {
+        const video = modalMediaWrapper.querySelector('video');
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+            video.src = '';
+            video.load();
+        }
+    }
 }
 
 // --- Experience Modal & Slideshow Logic ---
