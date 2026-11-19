@@ -7,7 +7,7 @@ const projects = [
         summary: "Full URDF modeling and ROS2 integration for a robotic arm.",
         description: "Modeled a 3-degree-of-freedom manipulator in Gazebo. Implemented ros2_control hardware interfaces to manage joint states and trajectory planning.",
         stack: ["Gazebo", "URDF", "ROS2 Control", "MoveIt"],
-        github: "https://github.com/yourusername/manipulator",
+        github: "https://github.com/HaiPy04/manipulator",
         image: "./images/rmp_manip.png",
         videoPreview: "videos/rmpflow.webm"
     },
@@ -18,7 +18,7 @@ const projects = [
         summary: "Sim-to-Real autonomous landing pipeline using Isaac Sim.",
         description: "Built a target detection pipeline using YOLOv8 and PnP pose estimation. Integrated ROS2 control for precise approach and safe landing. Validated using synthetic data generation in Isaac Sim (Replicator).",
         stack: ["ROS2", "Isaac Sim", "YOLOv8", "Python", "Computer Vision"],
-        github: "https://github.com/yourusername/drone-landing",
+        github: "https://github.com/HaiPy04/drone-landing",
         image: "images/world.png",
         videoPreview: "videos/drone_approach"
     },
@@ -29,7 +29,7 @@ const projects = [
         summary: "Full URDF modeling and ROS2 integration for a robotic arm.",
         description: "Modeled a 3-degree-of-freedom manipulator in Gazebo. Implemented ros2_control hardware interfaces to manage joint states and trajectory planning.",
         stack: ["Gazebo", "URDF", "ROS2 Control", "MoveIt"],
-        github: "https://github.com/yourusername/manipulator",
+        github: "https://github.com/HaiPy04/manipulator",
         image: "./images/manipulator.png",
         videoPreview: "videos/DOF_3_manip.webm"
     },
@@ -40,7 +40,7 @@ const projects = [
         summary: "Full game engine written in C/Assembly on custom hardware.",
         description: "Developed a complete Snake game on an STM32 microcontroller without an OS (Bare Metal). Wrote custom HAL drivers for direct register access, managed IMU inputs for control, and generated audio signals via DAC. Optimized memory usage for restricted embedded environment.",
         stack: ["C", "Assembly", "STM32", "HAL", "Altium"],
-        github: "https://github.com/yourusername/stm32-snake", // Placeholder
+        github: "https://github.com/HaiPy04/stm32-snake", // Placeholder
         image: "images/world.png",
         videoPreview: "videos/snake.mp4"
     },
@@ -51,7 +51,7 @@ const projects = [
         summary: "High-speed line follower with custom PCB and PID control.",
         description: "Designed a custom PCB for an Arduino Mini-based robot. Implemented a tuned PID control loop for high-speed line following and maze solving algorithms. Secured 2nd place at the National Polymaze Competition.",
         stack: ["C++", "Arduino", "PCB Design", "PID Control"],
-        github: "https://github.com/yourusername/polymaze",
+        github: "https://github.com/HaiPy04/polymaze",
         image: "images/polymaze.png",
         videoPreview: "videos/amazeo.mkv"
     },
